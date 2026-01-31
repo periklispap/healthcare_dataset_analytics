@@ -1,8 +1,8 @@
--- Step 0:  Create the database
+-- Step 1:  Create the database
 CREATE DATABASE IF NOT EXISTS healthcare_analytics;
 USE healthcare_analytics;
 
--- Step 1: Create a raw/blank table with the colimn names and data types before loading into it the data from the .csv file.
+-- Step 2: Create a raw/blank table with the colimn names and data types before loading into it the data from the .csv file.
 
 DROP TABLE IF EXISTS raw_healthcare_data; -- Used to avoid duplicate columns error when testing is performed
 
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS raw_healthcare_data (
     test_results VARCHAR(50)
 );
 
--- Step 2: Load all the data of the .csv  file (excluding the headings row) into the created raw/blank table.
+-- Step 3: Load all the data of the .csv  file (excluding the headings row) into the created raw/blank table.
 LOAD DATA LOCAL INFILE
 '/Users/periklespapadopoulos/Desktop/PP/Healthcare_Project/healthcare_dataset.csv'
 INTO TABLE raw_healthcare_data
@@ -33,6 +33,3 @@ ENCLOSED BY '"'
 LINES TERMINATED BY '\n'
 IGNORE 1 ROWS;
 
--- Step 3: Test that the table data are shown properly.
-SELECT * FROM raw_healthcare_data
-LIMIT 5;
