@@ -32,6 +32,16 @@ billing information, and administrative attributes.
 - MySQL Workbench
 - SQL
 
+## How to run
+Run the scripts in this order:
+1. sql/01_load_raw.sql
+2. sql/02_build_clean.sql
+3. sql/03_kpi_queries.sql
+
+Note: Update the CSV file path in the load script before execution.
+
 ## Notes
 This project uses synthetic data and focuses on analytics logic rather than
 real-world hospital reporting.
+
+
