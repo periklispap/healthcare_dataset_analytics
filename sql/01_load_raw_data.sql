@@ -25,6 +25,7 @@ CREATE TABLE IF NOT EXISTS raw_healthcare_data (
 );
 
 -- Step 3: Load all the data of the .csv  file (excluding the headings row) into the created raw/blank table.
+-- Dataset source: Kaggle (see README for link)
 LOAD DATA LOCAL INFILE
 '/Users/periklespapadopoulos/Desktop/PP/Healthcare_Project/healthcare_dataset.csv'
 INTO TABLE raw_healthcare_data
