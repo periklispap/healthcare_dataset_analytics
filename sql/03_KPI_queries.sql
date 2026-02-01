@@ -1,4 +1,6 @@
--- Creating a view table in order to avoid negative values of billing (identified in /sql/02_creat_clean_data_table) that may affect calculations.
+-- Creating a view table in order to avoid negative values of billing (identified in /sql/02_build_clean_data_table) 
+-- that may affect calculations.
+
 DROP VIEW IF EXISTS v_healthcare_positive_billing;
 
 CREATE VIEW v_healthcare_positive_billing AS
@@ -14,8 +16,8 @@ SELECT
     ROUND(AVG(days_of_stay), 1) AS avg_length_of_stay
 FROM v_healthcare_positive_billing;
 
--- Finding: 15.5 Average Days of Stay indicate suggests prolonged hospitalizations, 
--- indication the need for proper resource and staff allocation.
+-- Finding: An average LOS of 15.5 days suggests prolonged hospitalizations,
+-- supporting capacity planning and resource/staff allocation.
 
 -- 6.2: Metrics based on the age-group/demographic data:
 SELECT
@@ -107,7 +109,8 @@ WHERE days_of_stay IS NOT NULL
 GROUP BY los_bucket
 ORDER BY admissions DESC;
 
--- Finding: The highest admission volume is associated with stays of 15+ days.
+-- Finding: Admissions are concentrated in the longer-stay bucket (15+ days),
+-- indicating prolonged utilization among a large share of cases.
 
 -- 6.9: Distribution of admissions based on different billing amount groups:
 SELECT
@@ -124,7 +127,7 @@ FROM v_healthcare_positive_billing
 GROUP BY billing_bucket
 ORDER BY admissions DESC;
 
--- Finding: The 20K+ billing amount accounts for the highest number of admissions.
+-- Finding: Admissions are concentrated in the higher billing buckets (20K-35K and 35K+).
 
 -- 6.10: Identify high-cost cases (e.g. billing_amount >= 45000)
 SELECT
