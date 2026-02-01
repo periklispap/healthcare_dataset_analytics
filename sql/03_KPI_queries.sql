@@ -98,7 +98,7 @@ ORDER BY avg_cost_per_day DESC;
 SELECT
    CASE
        WHEN days_of_stay <= 8 THEN '0–8 days'
-       WHEN days_of_stay BETWEEN 8 AND 15 THEN '8–15 days'
+       WHEN days_of_stay BETWEEN 9 AND 15 THEN '8–15 days'
        ELSE '15+ days'
    END AS los_bucket,
    COUNT(*) AS admissions
