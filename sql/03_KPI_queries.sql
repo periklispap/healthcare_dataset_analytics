@@ -9,7 +9,7 @@ FROM healthcare_clean
 WHERE billing_amount >= 0;
 
 
--- Step 6: Calculating basic metrics from the view table with positive billing amount values
+-- Step 6: Calculating basic metrics from the view table with positive billing amount values.
 
 -- 6.1: Average Days of Stay with 1 decimal point
 SELECT
